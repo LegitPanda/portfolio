@@ -1,0 +1,16 @@
+https://www.teamblind.com/post/FAANG-how-many-Leetcode-Problems-did-you-do-O65GsBBd
+None 12.0% (36)
+Under 100 25.0% (75)
+100-200 23.3% (70)
+201-300 12.0% (36)
+301-400 10.0% (30)
+401-500 5.0% (15)
+500-600 3.7% (11)
+600+ 9.0% (27)
+
+https://www.reddit.com/poll/nbhj2j?utm_source=reddit&utm_medium=usertext&utm_name=leetcode&utm_content=t3_nbhj2j
+310 59.7% <1 hour
+117 22.5% 1-2 hours
+38 7.3% 2-3 hours
+17 3.3% 3-4 hours
+37 7.1% 4 hours+

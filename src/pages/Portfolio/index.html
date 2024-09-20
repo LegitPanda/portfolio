@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>My Personal Page</title>
+	<link rel="stylesheet" href="aurora.css">
+</head>
+
+<body>
+	<nav>
+		<div class="dropdown">
+			<a href="#" class="dropbtn">My Projects</a>
+			<div class="dropdown-content">
+				<a href="hours-spent-on-leetcode">Hours Spent on Leetcode (HSOL)</a>
+			</div>
+		</div>
+		<div>
+			<a href="https://github.com/yourusername" target="_blank">GitHub</a>
+			<a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+		</div>
+	</nav>
+
+	<div class="aurora">
+		<div class="aurora__container">
+			<h1>Welcome to Eric's page!</h1>
+			<p>Stay a while, and enjoy the show.</p>
+		</div>
+	</div>
+
+	<svg class="mountains" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+		<path class="mountain"
+			d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,229.3C672,224,768,192,864,165.3C960,139,1056,117,1152,133.3C1248,149,1344,203,1392,229.3L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+		</path>
+		<path class="mountain"
+			d="M0,160L48,144C96,128,192,96,288,106.7C384,117,480,171,576,192C672,213,768,203,864,181.3C960,160,1056,128,1152,128C1248,128,1344,160,1392,176L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+			opacity="0.5"></path>
+	</svg>
+	<script>
+		function createStar() {
+			const star = document.createElement('div');
+			star.classList.add('star');
+			star.style.left = `${Math.random() * 100}%`;
+			star.style.top = `${Math.random() * 100}%`;
+			star.style.width = `${Math.random() * 2 + 1}px`;
+			star.style.height = star.style.width;
+			// star.style.animationDuration = `${Math.random() * 2 + 0.5}s`;
+			star.style.opacity = `${Math.random()}`;
+			return star;
+		}
+
+		const sky = document.getElementsByClassName('aurora')[0];
+		for (let i = 0; i < 100; i++) {
+			sky.appendChild(createStar());
+		}
+	</script>
+</body>
+
+</html>

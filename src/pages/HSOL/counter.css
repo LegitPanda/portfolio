@@ -1,0 +1,184 @@
+@property --num {
+    syntax: '<integer>';
+    initial-value: 0;
+    inherits: false;
+}
+
+.counter {
+    transition: --num 1s;
+    counter-reset: num var(--num);
+    animation: counter 1s infinite alternate ease-in-out;
+}
+
+.counter::after {
+    content: counter(num);
+}
+
+html {
+    counter-reset: footnotes;
+}
+
+/**
+   * Inline footnotes references
+   * 1. Increment the counter at each new reference
+   * 2. Reset link styles to make it appear like regular text
+   */
+[aria-describedby="footnote-label"] {
+    counter-increment: footnotes;
+}
+
+/**
+   * Actual numbered references
+   * 1. Display the current state of the counter (e.g. `[1]`)
+   * 2. Align text as superscript
+   * 3. Make the number smaller (since it's superscript)
+   * 4. Slightly offset the number from the text
+   * 5. Reset link styles on the number to show it's usable
+   */
+[aria-describedby="footnote-label"]::after {
+    content: '[' counter(footnotes) ']';
+    /* 1 */
+    vertical-align: super;
+    /* 2 */
+    font-size: 0.5em;
+    /* 3 */
+    margin-left: 2px;
+    /* 4 */
+    color: blue;
+    /* 5 */
+    text-decoration: underline;
+    /* 5 */
+    cursor: pointer;
+    /* 5 */
+}
+
+/**
+   * Resetting the default focused styles on the number
+   */
+[aria-describedby="footnote-label"]:focus::after {
+    outline: thin dotted;
+    outline-offset: 2px;
+}
+
+[aria-label="Back to content"] {
+    font-size: 0.8em;
+}
+
+/**
+   * Highlight target note
+   */
+footer :target {
+    background: #ffff0026;
+    transition: background-color 1s ease-out;
+    border-radius: 0.5rem;
+}
+
+/**
+   * Visually hidden yet accessible content
+   */
+.visually-hidden {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    visibility: hidden;
+    opacity: 0;
+}
+
+.p {
+    text-align: center;
+    font-size: .75em;
+    padding-top: 150px;
+}
+
+.mc-label {
+    text-align: left;
+}
+
+section {
+    height: 100vh;
+    scroll-snap-align: start;
+    text-align: center;
+    position: relative;
+}
+
+html {
+    scroll-snap-type: y mandatory;
+}
+
+.no-overflow {
+    max-height: 75vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/*dont @ me*/
+section>h1,
+section>h2,
+section>h3,
+section * h1,
+section * h2,
+section * h3 {
+    padding-top: 1rem;
+}
+
+details {
+    overflow: hidden;
+    max-height: 2em;
+    /* Adjust this to match your summary height */
+    transition: max-height 400ms ease-out;
+    border: 1px grey solid;
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+}
+
+details[open] {
+    max-height: 100vh;
+}
+
+details>summary {
+    cursor: pointer;
+}
+
+details>div {
+    padding-top: 0.5em;
+}
+
+svg {
+    max-height: 50vh;
+    opacity: 1;
+    z-index: -10;
+}
+
+details[open]~svg,
+details[open]~div {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+.clock {
+    transform: rotate(-90deg);
+}
+
+.hour-hand {
+    transform-origin: 50% 50%;
+    animation: rotate 60s linear infinite;
+}
+
+.minute-hand {
+    transform-origin: 50% 50%;
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.error {
+    color: rgb(150, 74, 80);
+    margin-bottom: 1rem;
+}

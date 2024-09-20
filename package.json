@@ -1,0 +1,23 @@
+{
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build"
+	},
+	"dependencies": {
+		"formik": "^2.4.6",
+		"preact": "^10.22.1",
+		"preact-iso": "^2.6.3",
+		"yup": "^1.4.0"
+	},
+	"devDependencies": {
+		"@preact/preset-vite": "^2.9.0",
+		"gh-pages": "^6.1.1",
+		"typescript": "^5.5.4",
+		"vite": "^5.3.3"
+	}
+}
