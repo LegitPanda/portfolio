@@ -25,7 +25,7 @@ type SubmissionData struct {
 
 func submitLeetcodeData(w http.ResponseWriter, r *http.Request) {
 	// Set CORS headers to allow all origins
-	w.Header().Set("Access-Control-Allow-Origin", "https://ericxing.com, https://www.ericxing.com, https://legitpanda.github.io")
+	w.Header().Set("Access-Control-Allow-Origin", "https://legitpanda.github.io")
 	w.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 

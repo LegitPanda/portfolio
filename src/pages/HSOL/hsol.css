@@ -184,10 +184,12 @@ details[open] ~ div {
     0%,
     99% {
         opacity: 0;
+        max-height: 50vh;
     }
 
     100% {
         opacity: 0;
+        max-height: 0;
         display: none;
     }
 }
