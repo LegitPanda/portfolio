@@ -1,10 +1,5 @@
-# `create-preact`
-
-<h2 align="center">
-  <img height="256" width="256" src="./src/assets/preact.svg">
-</h2>
-
-<h3 align="center">Get started using Preact and Vite!</h3>
+# My personal portfolio
+- currently just holds my random thoughts and projects
 
 ## Getting Started
 
