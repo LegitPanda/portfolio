@@ -14,8 +14,8 @@ export function App() {
 			{/* <Header /> */}
 			<main>
 				<Router>
-					<Route path="/" component={Home} />
-					<Route path="/hours-spent-on-leetcode" component={HoursSpentOnLeetcode} />
+					<Route path="/portfolio/" component={Home} />
+					<Route path="/portfolio/hours-spent-on-leetcode" component={HoursSpentOnLeetcode} />
 					<Route default component={NotFound} />
 				</Router>
 			</main>
