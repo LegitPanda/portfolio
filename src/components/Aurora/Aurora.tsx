@@ -295,7 +295,7 @@ h1 {
 			<body>
 				<nav>
 					<div class="dropdown">
-						<div class="dropbtn">My Projects</div>
+						<div class="dropbtn" style={{ cursor: 'pointer' }}>My Projects</div>
 						<div class="dropdown-content">
 							<a href="hours-spent-on-leetcode">Hours Spent on Leetcode (HSOL)</a>
 						</div>
