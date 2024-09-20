@@ -1,6 +1,6 @@
 import { Formik, Field } from "formik";
 import * as Yup from "yup";
-import "./counter.css";
+import "./hsol.css";
 import { useEffect, useState } from "preact/hooks";
 
 const LeetcodeSchema = Yup.object().shape({
@@ -186,9 +186,10 @@ const SectionInDefense = () => (
 
 const SectionQuestionnaire = ({ done, setDone }: { done: boolean, setDone: (done: boolean) => void }) => (
 	<section>
-		{done ? <h2>Thank you for your submission!</h2> : <Questionnaire done={done} setDone={setDone} />}
+		{done || localStorage.getItem('hsol_submission_done') ? <h2>Thank you for your submission!</h2> : <Questionnaire done={done} setDone={setDone} />}
 	</section>
 );
+
 
 const SectionUnhinged = () => (
 	<section>
@@ -389,22 +390,28 @@ const Questionnaire = ({ done, setDone }: { done: boolean, setDone: (done: boole
 			onSubmit={async (values, { setSubmitting, setStatus }) => {
 				try {
 					const response = await fetch(
-						// 'https://YOUR_REGION-YOUR_PROJECT_ID.cloudfunctions.net/submitLeetcodeData',
 						'https://us-central1-portfolio-436119.cloudfunctions.net/hsol',
 						{
 							method: 'POST',
 							body: JSON.stringify(values),
 						}
 					);
-					setStatus({ success: true, message: 'Data submitted successfully!' });
+
+					if (response.ok) {
+						setStatus({ success: true, message: 'Data submitted successfully!' });
+						setDone(true);
+						localStorage.setItem('hsol_submission_done', 'true');
+					} else {
+						setStatus({ success: false, message: 'Failed to submit data. Please try again.' });
+					}
 				} catch (error) {
 					console.error('Error submitting data:', error);
 					setStatus({ success: false, message: 'Failed to submit data. Please try again.' });
 				} finally {
 					setSubmitting(false);
-					setDone(true);
 				}
 			}}
+
 		>
 			{({
 				values,
@@ -421,7 +428,7 @@ const Questionnaire = ({ done, setDone }: { done: boolean, setDone: (done: boole
 						<h2>Want to help me refine these stats?</h2>
 						<form onSubmit={handleSubmit}>
 							<div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-								<label style={{flexGrow: 1}}>
+								<label style={{ flexGrow: 1 }}>
 									<div>How many hours have you spent on Leetcode?</div>
 									<input
 										aria-invalid={errors.hours ? true : undefined}
@@ -442,7 +449,7 @@ const Questionnaire = ({ done, setDone }: { done: boolean, setDone: (done: boole
 									/>
 								</label>
 								{touched.hours && errors.hours && <Error>{errors.hours}</Error>}
-								<label style={{flexGrow: 1}}>
+								<label style={{ flexGrow: 1 }}>
 									<div>How many years of experience do you have?</div>
 									<input
 										aria-invalid={errors.yearsExperience ? true : undefined}

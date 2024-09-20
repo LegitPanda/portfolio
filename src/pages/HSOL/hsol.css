@@ -98,7 +98,9 @@ section {
     scroll-snap-align: start;
     text-align: center;
     position: relative;
+    overflow: auto;
 }
+
 
 html {
     scroll-snap-type: y mandatory;
@@ -130,9 +132,7 @@ details {
     padding: 0.5rem;
 }
 
-details[open] {
-    max-height: 100vh;
-}
+
 
 details>summary {
     cursor: pointer;
@@ -148,10 +148,48 @@ svg {
     z-index: -10;
 }
 
-details[open]~svg,
-details[open]~div {
-    opacity: 0;
+details {
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+details[open] {
+    max-height: 100vh;
+}
+
+details ~ svg,
+details ~ div {
+    opacity: 1;
     transition: opacity 0.3s ease-out;
+}
+
+details[open] ~ svg,
+details[open] ~ div {
+    opacity: 0;
+}
+
+@keyframes hideAfterFade {
+    to {
+        visibility: hidden;
+    }
+}
+
+details[open] ~ svg,
+details[open] ~ div {
+    animation: hideAfterFade 0s 0.3s forwards;
+}
+
+@keyframes hideAfterFade {
+
+    0%,
+    99% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
+    }
 }
 
 .clock {
