@@ -17,14 +17,13 @@ const LeetcodeSchema = Yup.object().shape({
 
 const calculateDevelopers = () => {
 	// https://www.statista.com/statistics/627312/worldwide-developer-population/
-	// 28.7 million developers at the start of 2024 + 1 million per year
+	// 28.7 million developers at the start of 2024 + 1 million per year, roughly
 	// Base number of developers at the start of 2024
 	const base_developers = 28.7e6;
 
 	// Start time (January 1, 2024 00:00:00 UTC)
 	const start_time = 1704067200000;
 
-	// Use current time if no epoch_time is provided
 	const epoch_time = new Date().getTime();
 
 	// Calculate years passed since start time
@@ -45,11 +44,10 @@ const calculateHoursSpent = () => {
 
 const HoursSpentOnLeetcode = () => {
 	const [num, setNum] = useState(calculateHoursSpent());
-	// console.log({ num });
 
-	// auto increment counter
 	useEffect(() => {
 		const interval = setInterval(() => setNum(calculateHoursSpent()), 1000);
+		document.title = 'Hours Spent on Leetcode'
 		return () => clearInterval(interval);
 	}, []);
 
@@ -102,6 +100,8 @@ const Section80000 = ({ num }: { num: number }) => (
 				<div className="no-overflow">
 					Hours spent / 80 000. I know it's not really 80 000 hours but like
 					everything else on this page it's a rough estimate ¯\_(ツ)_/¯
+					<br/>
+					Or this counter could indicate the number of shitty sites like this one that could have been created already from being too jaded from the interview process.
 				</div>
 			}
 		/>
@@ -156,10 +156,10 @@ const SectionMoney = ({ num }: { num: number }) => (
 			content={
 				<div className="no-overflow">
 					The average developer in the US makes{" "}
-					<Footnote id="footnote-salary" text="$55.70 per hour." /> Yes, not all
-					of us are from the US but global data is hard to find. The value
-					should be somewhere between 20-60 USD/hr depending on the country so
-					this is probably an overestimate, and we're probably not working in
+					<Footnote id="footnote-salary" text="$45.24 per hour." /> Yes, not all
+					of us are from the US but the global
+					should be somewhere between 20-50 USD/hr depending on the country so
+					this is probably an overestimate, and (I hope) we're not working in
 					our free time.
 				</div>
 			}
@@ -173,7 +173,7 @@ const SectionInDefense = () => (
 		<h2>I have nothing against LeetCode</h2>
 		<p>
 			I think it's an amazing (free!!!) tool if you're into competitive
-			programming/academia, but it's basically become our certification at this
+			programming/academia (how else how you going to see questions like <a href={'https://leetcode.com/problems/coin-change/description/'}>Coin Change?</a>), but it's basically become our certification at this
 			point. This is also coming from a privileged position where programmers
 			don't have to get any certification in order to find a job (literally
 			anyone can practice and become decent with time, just like
@@ -532,7 +532,7 @@ const Questionnaire = ({ done, setDone }: { done: boolean, setDone: (done: boole
 										onChange={handleChange}
 										onBlur={handleBlur}
 									/>
-									Yes, make use of a shorter probation period
+									Yes, make use of a longer probation period to see actual fit
 								</label>
 
 								<label className={"mc-label"}>
